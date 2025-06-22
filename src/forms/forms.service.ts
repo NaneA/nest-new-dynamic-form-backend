@@ -95,4 +95,11 @@ export class FormsService {
     }
     return new FormsDto(form);
   }
+
+  async findAll(): Promise<FormsDto[]> {
+    const forms = await this.formsRepository.find({
+      relations: ['questions'],
+    });
+    return forms.map((form) => new FormsDto(form));
+  }
 }

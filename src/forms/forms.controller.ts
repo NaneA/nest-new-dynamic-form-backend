@@ -34,4 +34,14 @@ export class FormsController {
   async getForm(@Param('id') id: string): Promise<FormsDto> {
     return await this.formsService.findOne(id);
   }
+
+  @Get()
+  @ApiOperation({ summary: 'Retrieve all form schemas' })
+  @ApiOkResponse({
+    description: 'List of all forms',
+    type: [FormsDto],
+  })
+  async getAll(): Promise<FormsDto[]> {
+    return this.formsService.findAll();
+  }
 }
