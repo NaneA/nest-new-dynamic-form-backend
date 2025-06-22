@@ -46,6 +46,14 @@ export class CreateQuestionDto {
 }
 
 export class CreateFormDto {
+  @ApiPropertyOptional({
+    description: 'Unique identifier for the form',
+    format: 'uuid',
+  })
+  @IsUUID('4')
+  @IsOptional()
+  id?: string;
+
   @ApiProperty({ description: 'Title of the form' })
   @IsString()
   @IsNotEmpty()

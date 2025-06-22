@@ -24,7 +24,7 @@ export class FormsController {
     type: FormsDto,
   })
   async createForm(@Body() createFormDto: CreateFormDto): Promise<FormsDto> {
-    return await this.formsService.create(createFormDto);
+    return await this.formsService.createOrUpdate(createFormDto);
   }
 
   @Get(':id')
